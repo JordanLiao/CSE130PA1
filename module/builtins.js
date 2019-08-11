@@ -111,8 +111,8 @@ _.each(names, name => {
 	var toggle = false;
   cache[name] = function() {
 		if(!toggle) {
-			return require(name);
 			toggle = true;
+			return require(name);
 		}
 	}
 });
