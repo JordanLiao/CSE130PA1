@@ -112,6 +112,7 @@ _.each(names, name => {
 		var toggle = false;
 		if(!toggle) {
 			require(name);
+			toggle = true;
 		}
 	}
 });
