@@ -65,8 +65,9 @@ exports._cache = cache;
  * that you can use to test your implementation.
  */
 function isBuiltIn(name) {
-	if(names.indexOf(name) > -1)
+	if(cache[name] != undefined) {
 		return true;
+	}
 	return false;
 }
 exports.isBuiltIn = isBuiltIn;
@@ -107,7 +108,12 @@ exports.getBuiltIn = getBuiltIn;
  * See tests/builtins.js for some functionality tests.
  */
 _.each(names, name => {
-  cache[name] = /** <FILL-IN> **/ () => require(name); /** </FILL-IN> **/
+  cache[name] = function() {
+		var toggle = false;
+		if(!toggle) {
+			require(name);
+		}
+	}
 });
 
 /* Simple isBuitlIn sanity-check test. You are encouraged to write additional
