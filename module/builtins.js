@@ -108,8 +108,8 @@ exports.getBuiltIn = getBuiltIn;
  * See tests/builtins.js for some functionality tests.
  */
 _.each(names, name => {
+	var toggle = false;
   cache[name] = function() {
-		var toggle = false;
 		if(!toggle) {
 			return require(name);
 			toggle = true;
