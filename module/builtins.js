@@ -111,7 +111,7 @@ _.each(names, name => {
   cache[name] = function() {
 		var toggle = false;
 		if(!toggle) {
-			require(name);
+			return require(name);
 			toggle = true;
 		}
 	}
