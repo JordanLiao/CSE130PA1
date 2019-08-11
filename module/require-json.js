@@ -29,10 +29,11 @@ const require_ = require('./require.js');
  * turns a string into one such object.
  */
 function loadJSONFile(resolvedName) {
-	let obj = JSON.parse(resolvedName);
-	if(cache[resolvedName] == undefined) {
-		cache[resolvedName] = obj;
-	}
+	const code = fs.readFileSync(resolvedName, 'utf8');
+	let obj = JSON.parse(code);
+	//if(cache[resolvedName] == undefined) {
+	require_._cache[resolvedName] = obj;
+	//}
 	return obj;
 }
 exports.loadJSONFile = loadJSONFile;
