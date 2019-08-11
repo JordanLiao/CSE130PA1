@@ -65,8 +65,9 @@ exports._cache = cache;
  * that you can use to test your implementation.
  */
 function isBuiltIn(name) {
-  /** <FILL-IN> **/
-  /** </FILL-IN> **/
+	if(names.indexOf(name) > -1)
+		return true;
+	return false;
 }
 exports.isBuiltIn = isBuiltIn;
 

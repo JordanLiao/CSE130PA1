@@ -29,8 +29,11 @@ const require_ = require('./require.js');
  * turns a string into one such object.
  */
 function loadJSONFile(resolvedName) {
-  /** <FILL-IN> **/
-  /** </FILL-IN> **/
+	let file = JSON.parse(resolvedName);
+	if(!(resolvedName in cache)) {
+		cache[resolvedName] = file;
+	}
+	return file;
 }
 exports.loadJSONFile = loadJSONFile;
 
@@ -66,4 +69,11 @@ exports.loadJSONFile = loadJSONFile;
  * you need to keep track of any state (hint: the original loader) you can rely
  * on the fact that JavaScript functions are first-class closures.
  */
-require_.loader = /** <FILL-IN> **/ undefined; /** </FILL-IN> **/
+require_.loader = function(resolvedName, nextLoader) {
+  if(path.extname(resolvedName) === '.json') {
+    return loadJSONFile(resolvedName);
+	}
+  if(path.extname(resolvedName) === '.js') {
+    return require_.loadJSFile(resolvedName);
+	}
+}; 
