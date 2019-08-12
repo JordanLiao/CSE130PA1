@@ -46,8 +46,8 @@ assert(avg_sqrs(ls) == 11);
   Implement min and max functions using fold_left
 */
 
-const ls_min = ls => undefined ;//ls.reduce((acc, x) => x < acc ? acc = x : acc = acc, ls.get(0));
-const ls_max = ls => undefined ;//ls.reduce((acc, x) => x > acc ? acc = x : acc = acc, ls.get(0));
+const ls_min = ls => ls.reduce((acc, x) => x < acc ? acc = x : acc = acc, ls.get(0));
+const ls_max = ls => ls.reduce((acc, x) => x > acc ? acc = x : acc = acc, ls.get(0));
 
 assert(ls_min(ls) == 1);
 assert(ls_max(ls) == 5);
@@ -57,8 +57,8 @@ assert(ls_max(ls) == 5);
   using filter
 */
 
-const ls_evens = ls => undefined;//ls.filter((x) => x % 2 == 0);
-const ls_odds  = ls => undefined;//ls.filter((x) => x % 2 != 0);
+const ls_evens = ls => ls.filter((x) => x % 2 == 0);
+const ls_odds  = ls => ls.filter((x) => x % 2 != 0);
 
 assert(ls_evens(ls).equals(List([2,4])));
 assert(ls_odds(ls).equals(List([1,3,5])));
@@ -74,8 +74,8 @@ function compose(f, g) {
   };
 }
 
-const max_even = ls => undefined;//compose(ls_max, ls_evens)(ls);
-const min_even = ls => undefined;//compose(ls_min, ls_evens)(ls);
+const max_even = ls => compose(ls_max, ls_evens)(ls);
+const min_even = ls => compose(ls_min, ls_evens)(ls);
 
 assert(max_even(ls) == 4);
 assert(min_even(ls) == 2);
